@@ -6,15 +6,16 @@ package com.lol.vendotron.dao;
 
 /**
  *
- * @author Henry
+ * @author Jeonghoon
  */
-public class VendotronDaoFileException extends Exception {
+public class InsufficientFundsException extends Exception {
 
-    public VendotronDaoFileException(String message) {
+    public InsufficientFundsException(String message) {
         super(message);
     }
 
-    public VendotronDaoFileException(String message, Throwable cause) {
+    public InsufficientFundsException(String message, Throwable cause) {
         super(message, cause);
     }
+
 }

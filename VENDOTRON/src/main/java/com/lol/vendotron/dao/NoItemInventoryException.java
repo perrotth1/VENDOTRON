@@ -6,15 +6,16 @@ package com.lol.vendotron.dao;
 
 /**
  *
- * @author Henry
+ * @author Jeonghoon
  */
-public class VendotronDaoFileException extends Exception {
+public class NoItemInventoryException extends Exception {
 
-    public VendotronDaoFileException(String message) {
+    public NoItemInventoryException(String message) {
         super(message);
     }
 
-    public VendotronDaoFileException(String message, Throwable cause) {
+    public NoItemInventoryException(String message, Throwable cause) {
         super(message, cause);
     }
+
 }
