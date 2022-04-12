@@ -75,23 +75,23 @@ public class VendotronController {
         List<Egg> itemList = service.getAllItems();
         // TODO: display USING VIEW
         view.displayAllItems(itemList);
-  //      view.displayNoMoney();
+
+        view.displayCurrentBalance(service.getCurrentBalance());
 
         return view.getMenuSelection();
     }
 
     private void putMoneyToBuy() {
-        System.out.println("PUT MONEY TO BUY");
-
         // TODO: Call service layer
         // display menu for adding money from VIEW
-        service.addMoney(new BigDecimal("1.20"));
+        BigDecimal moneyAmount = view.displayAddMoney();
+        service.addMoney(moneyAmount);
     }
 
     private void selectItem() throws InsufficientFundsException, NoItemInventoryException, VendotronDaoFileException {
-        // TODO:
-        // Display item menu
-        service.giveItemToUser(1);
+        int selectedId = view.displayselectItem(1, service.getAllItems().size());
+        Egg egg = service.giveItemToUser(selectedId);
+        view.displayDispensingItem(egg);
     }
 
     private void cancel() {

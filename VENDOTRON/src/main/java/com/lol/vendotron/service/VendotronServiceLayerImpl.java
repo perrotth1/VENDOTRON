@@ -90,4 +90,9 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
 
         return changes;
     }
+
+    @Override
+    public BigDecimal getCurrentBalance() {
+        return dao.getBalance();
+    }
 }
