@@ -4,7 +4,8 @@
  */
 package com.lol.vendotron.dto;
 
-import static com.lol.vendotron.dto.Change.getCoins;
+import com.lol.vendotron.utils.CoinType;
+import static com.lol.vendotron.utils.Change.getCoins;
 import java.util.Map;
 import java.util.TreeMap;
 import org.junit.jupiter.api.Test;
