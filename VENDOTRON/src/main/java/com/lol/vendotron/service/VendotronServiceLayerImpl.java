@@ -53,7 +53,7 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
         }
         // Check if the user has put in enough money before purchasing an item.
         if (dao.getBalance().compareTo(egg.getCost()) < 0) {
-            throw new NoItemInventoryException("Insufficient fund. Please put more money.");
+            throw new InsufficientFundsException("Insufficient fund. Please put more money.");
         }
 
         // Reduce stock with DAO
