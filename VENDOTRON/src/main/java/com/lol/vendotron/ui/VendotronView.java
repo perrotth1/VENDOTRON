@@ -7,6 +7,7 @@ package com.lol.vendotron.ui;
 import java.util.List;
 //import com.lol.vendotron.dao.VendotronDaoFileException;
 import com.lol.vendotron.dto.Egg;
+import java.math.BigDecimal;
 
 /**
  *
@@ -42,13 +43,23 @@ public class VendotronView {
     }
 
 // Display
-    public void displayselectItem() {
-//        io.print();
+    public int displayselectItem(int min, int max) {
+        return io.readInt("Please choose one of the items:", min, max);
     }
 
 // Display Banners
-    public void displayAddMoney() {
-        io.print("---Buy an Item---");
+    public BigDecimal displayAddMoney() {
+        return io.readBigDecimal("Please enter amount of money: ");
+    }
+
+    public void displayCurrentBalance(BigDecimal balance) {
+        io.print("** Current balance: " + balance + "\n");
+    }
+
+    public void displayDispensingItem(Egg egg) {
+        io.print("----------------------");
+        io.print(egg.getName());
+        io.print("----------------------");
     }
 
 //    public void displayNoMoney() {

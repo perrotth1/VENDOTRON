@@ -1,5 +1,6 @@
 package com.lol.vendotron.ui;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO {
@@ -60,7 +61,7 @@ public class UserIOConsoleImpl implements UserIO {
         Scanner sc = new Scanner(System.in);
         System.out.println(prompt);
         return( Float.parseFloat( sc.nextLine() ) );
-    
+
     }
 
     @Override
@@ -81,7 +82,7 @@ public class UserIOConsoleImpl implements UserIO {
         Scanner sc = new Scanner(System.in);
         System.out.println(prompt);
         return( Long.parseLong( sc.nextLine() ) );
-    
+
     }
 
     @Override
@@ -95,5 +96,12 @@ public class UserIOConsoleImpl implements UserIO {
                 return input;
             }
         }
+    }
+
+    @Override
+    public BigDecimal readBigDecimal(String prompt) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(prompt);
+        return new BigDecimal(sc.nextLine());
     }
 }

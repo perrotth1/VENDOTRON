@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package com.lol.vendotron.dto;
+package com.lol.vendotron.utils;
 
 import com.lol.vendotron.utils.CoinType;
 import static com.lol.vendotron.utils.Change.getCoins;

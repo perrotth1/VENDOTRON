@@ -1,4 +1,4 @@
-1::Egg::Mixed Origin::1.00::2
+1::Egg::Mixed Origin::1.00::0
 2::Golden Egg::Mixed Origin::20.00::1
 3::Rotten Egg::Mixed Origin::0.25::2
 4::Deviled Egg::Mixed Origin::3.50::5
