@@ -44,7 +44,7 @@ public class Egg {
     
     public void rollIfBreaks(){
         Random rg = new Random();
-        if( rg.nextInt(2) == 0 ){
+        if( rg.nextInt(10) > 5 ){
             this.isBroken = true;
         }
     }

@@ -36,7 +36,8 @@ public class VendotronServiceLayerTest {
                 "Egg", // name
                 "Mixed Origin", // origin
                 new BigDecimal("1.25"), // cost
-                1);
+                1,
+                "caption");
     }
 
     @Test

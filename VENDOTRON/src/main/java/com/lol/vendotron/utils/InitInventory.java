@@ -20,7 +20,7 @@ public class InitInventory {
         Egg egg = new Egg(1, "Egg", "Mixed Origin", new BigDecimal("1.00").setScale(2, RoundingMode.HALF_UP), 5, "It's a good old fashioned egg.");
         eggs.put(egg.getId(), egg);
         
-        egg = new Egg(2, "Golden Egg", "Mixed Origin", new BigDecimal("20.00").setScale(2, RoundingMode.HALF_UP), 1, "It has a beautiful luser.");
+        egg = new Egg(2, "Golden Egg", "Mixed Origin", new BigDecimal("20.00").setScale(2, RoundingMode.HALF_UP), 1, "It has a beautiful luster.");
         eggs.put(egg.getId(), egg);
         
         egg = new Egg(3, "Rotten Egg", "Mixed Origin", new BigDecimal("0.25").setScale(2, RoundingMode.HALF_UP), 2, "It's a wretched, putrid egg.");
@@ -44,10 +44,10 @@ public class InitInventory {
         egg = new Egg(9, "Black Hot-Spring Egg", "Japan", new BigDecimal("12.00").setScale(2, RoundingMode.HALF_UP), 3, "It is black and stinks of sulfur from the hot springs.");
         eggs.put(egg.getId(), egg);
         
-        egg = new Egg(10, "Pickled Egg", "Germany", new BigDecimal("1.25").setScale(2, RoundingMode.HALF_UP), 10, "It has a briney pickle flavor." );
+        egg = new Egg(10, "Pickled Egg", "Germany", new BigDecimal("1.25").setScale(2, RoundingMode.HALF_UP), 10, "It has a briny pickle flavor." );
         eggs.put(egg.getId(), egg);
         
-        egg = new Egg(11, "Scotch Egg", "UK", new BigDecimal("5.50").setScale(2, RoundingMode.HALF_UP), 5, "It is an egg incased in fried sausage.");
+        egg = new Egg(11, "Scotch Egg", "UK", new BigDecimal("5.50").setScale(2, RoundingMode.HALF_UP), 5, "It is an egg encased in fried sausage.");
         eggs.put(egg.getId(), egg);
         
         return eggs;
@@ -57,7 +57,7 @@ public class InitInventory {
         String DELIMITER = "::";
         String line = _egg.getId() + DELIMITER + _egg.getName() + DELIMITER
                         + _egg.getOrigin() + DELIMITER + _egg.getCost() + DELIMITER
-                        + _egg.getStock();
+                        + _egg.getStock() + DELIMITER + _egg.getCaption();
         return line;
     }
     

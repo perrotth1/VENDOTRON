@@ -1,11 +1,11 @@
-1::Egg::Mixed Origin::1.00::5
-2::Golden Egg::Mixed Origin::20.00::1
-3::Rotten Egg::Mixed Origin::0.25::2
-4::Deviled Egg::Mixed Origin::3.50::5
-5::Tea Egg::China::5.00::3
-6::Century Egg::China::7.00::3
-7::Smoked Egg::China::3.25::3
-8::Shoyu Egg::Japan::1.75::10
-9::Black Hot-Spring Egg::Japan::12.00::3
-10::Pickled Egg::Germany::1.25::10
-11::Scotch Egg::UK::5.50::5
+1::Egg::Mixed Origin::1.00::5::It's a good old fashioned egg.
+2::Golden Egg::Mixed Origin::20.00::1::It has a beautiful luster.
+3::Rotten Egg::Mixed Origin::0.25::2::It's a wretched, putrid egg.
+4::Deviled Egg::Mixed Origin::3.50::5::It has a nice savory curry flavor.
+5::Tea Egg::China::5.00::3::It's savory with a subtle black tea flavor.
+6::Century Egg::China::7.00::3::It is pitch black and has a salty flavor.
+7::Smoked Egg::China::3.25::3::It has a wonderful smoky taste.
+8::Shoyu Egg::Japan::1.75::10::It has a nice soy sauce taste.
+9::Black Hot-Spring Egg::Japan::12.00::3::It is black and stinks of sulfur from the hot springs.
+10::Pickled Egg::Germany::1.25::10::It has a briny pickle flavor.
+11::Scotch Egg::UK::5.50::5::It is an egg encased in fried sausage.

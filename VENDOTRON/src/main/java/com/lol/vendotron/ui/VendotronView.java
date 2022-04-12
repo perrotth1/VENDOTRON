@@ -45,7 +45,7 @@ public class VendotronView {
 
 // Display
     public int displayselectItem(int min, int max) {
-        return io.readInt("Please choose one of the items:", min, max);
+        return io.readInt("Please choose one of the items (enter number):", min, max);
     }
 
 // Display Banners
@@ -59,7 +59,8 @@ public class VendotronView {
 
     public void displayDispensingItem(Egg egg) {
         io.print("----------------------");
-        io.print(egg.getName());
+        io.print("Now dispensing: " + egg.getName());
+        io.print(egg.getCaption());
         io.print("----------------------");
     }
 
@@ -74,8 +75,15 @@ public class VendotronView {
     public void displayunknownCommand() {
         io.print("---Unknown Command---");
     }
+    public void displayError(String e){
+        io.print("ERROR: "+e);
+    }
 
     public void displayexitMessage() {
         io.print("---Bye!---");
+    }
+    
+    public void pressEnterContinue(){
+        io.readString("Press enter to continue...");
     }
 }

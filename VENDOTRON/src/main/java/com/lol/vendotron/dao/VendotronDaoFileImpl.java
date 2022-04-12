@@ -54,7 +54,7 @@ public class VendotronDaoFileImpl implements VendotronDao {
     public String marshall(Egg _egg){
         String line = _egg.getId() + DELIMITER + _egg.getName() + DELIMITER
                         + _egg.getOrigin() + DELIMITER + _egg.getCost() + DELIMITER
-                        + _egg.getStock();
+                        + _egg.getStock() + DELIMITER + _egg.getCaption();
         return line;
     }
     
