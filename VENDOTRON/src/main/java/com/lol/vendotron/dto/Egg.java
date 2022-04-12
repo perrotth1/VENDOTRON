@@ -6,12 +6,14 @@ import java.math.BigDecimal;
  * @author nicolemagpantay
  */
 public class Egg {
-    private String name;
+    private String name, origin;
     private BigDecimal cost;
-    private int stock;
+    private int id, stock;
     
-    public Egg(String _name, BigDecimal _cost, int _stock){
+    public Egg(int _id, String _name, String _origin, BigDecimal _cost, int _stock){
+        this.id = _id;
         this.name = _name;
+        this.origin = _origin;
         this.cost = _cost;
         this.stock = _stock;
     }
@@ -24,6 +26,12 @@ public class Egg {
     }
     public int getStock(){
         return this.stock;
+    }
+    public String getOrigin(){
+        return this.origin;
+    }
+    public int getId(){
+        return this.id;
     }
     
     public void setStock(int _stock){
@@ -39,7 +47,10 @@ public class Egg {
     
     @Override
     public String toString(){
-        return(this.name + " : " + this.cost + " : [x" + this.stock + "]");
+        return(this.name 
+                + " (from " + this.origin + ") : "
+                + this.cost
+                + " [x" + this.stock + "]" );
     }
     
 }
