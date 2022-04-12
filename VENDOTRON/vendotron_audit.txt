@@ -7,3 +7,18 @@
 2022-04-12T14:35:30.316501 : Egg was sold.
 2022-04-12T14:35:30.332212 : Original amount of money: 1.20
 2022-04-12T14:35:30.332614 : After purchasing: 0.20
+<<<<<<< HEAD
+2022-04-12T14:52:41.948268 : Egg was sold.
+2022-04-12T14:52:41.964557 : Original amount of money: 1.20
+2022-04-12T14:52:41.965018 : After purchasing: 0.20
+2022-04-12T14:53:15.234842 : Egg was sold.
+2022-04-12T14:53:15.252728 : Original amount of money: 1.20
+2022-04-12T14:53:15.253205 : After purchasing: 0.20
+=======
+2022-04-12T15:10:36.040767500 : Egg was sold.
+2022-04-12T15:10:36.069751 : Original amount of money: 2.10
+2022-04-12T15:10:36.074748700 : After purchasing: 1.10
+2022-04-12T15:14:44.099229400 : Egg was sold.
+2022-04-12T15:14:44.109942800 : Original amount of money: 2.10
+2022-04-12T15:14:44.110945300 : After purchasing: 1.10
+>>>>>>> e398e7255b90de5e1cd6b4a75a510003196f8ede

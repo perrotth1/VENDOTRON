@@ -1,5 +1,6 @@
 package com.lol.vendotron.ui;
 
+import java.math.BigDecimal;
 
 public interface UserIO {
     void print(String msg);
@@ -21,4 +22,6 @@ public interface UserIO {
     long readLong(String prompt, long min, long max);
 
     String readString(String prompt);
+
+    BigDecimal readBigDecimal(String prompt);
 }
