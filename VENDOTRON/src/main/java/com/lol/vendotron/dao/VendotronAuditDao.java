@@ -8,6 +8,7 @@ package com.lol.vendotron.dao;
  *
  * @author Henry
  */
-public class VendotronAuditDao {
-    
+public interface VendotronAuditDao {
+
+    void writeAuditEntry(String entry) throws VendotronDaoFileException;
 }

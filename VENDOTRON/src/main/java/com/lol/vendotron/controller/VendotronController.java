@@ -5,13 +5,17 @@
 package com.lol.vendotron.controller;
 
 import com.lol.vendotron.dao.VendotronDaoFileException;
+import com.lol.vendotron.dto.Egg;
 import com.lol.vendotron.service.InsufficientFundsException;
 import com.lol.vendotron.service.NoItemInventoryException;
 import com.lol.vendotron.service.VendotronServiceLayer;
 import com.lol.vendotron.ui.UserIO;
 import com.lol.vendotron.ui.UserIOConsoleImpl;
 import com.lol.vendotron.ui.VendotronView;
+import com.lol.vendotron.utils.CoinType;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -53,6 +57,9 @@ public class VendotronController {
                         selectItem();
                         break;
                     case 3:
+                        cancel();
+                        break;
+                    case 4:
                         keepGoing = false;
                         break;
                     default:
@@ -60,17 +67,24 @@ public class VendotronController {
                 }
             }
             exitMessage();
-        } catch (InsufficientFundsException | NoItemInventoryException e) {
-//                VendotronDaoFileException e) {
+        } catch (InsufficientFundsException
+                | NoItemInventoryException
+                | VendotronDaoFileException e) {
             // TODO: should call a method in VIEW
             System.out.println(e.getMessage());
         }
     }
 
-    private int getMenuSelection() {
+    private int getMenuSelection() throws VendotronDaoFileException {
+        //
+//        List<Egg> itemList = service.getAllItems();
+
+//        System.out.println(itemList);
+
         // for testing
         System.out.println("put money");
         System.out.println("selectItem");
+        System.out.println("cancel");
         System.out.println("exit");
         return io.readInt("SELECT NUMBER: ");
 
@@ -83,7 +97,7 @@ public class VendotronController {
 
         // TODO: Call service layer
         // display menu for adding money from VIEW
-        service.addMoney(new BigDecimal("5.00"));
+        service.addMoney(new BigDecimal("1.20"));
     }
 
     private void selectItem() throws InsufficientFundsException, NoItemInventoryException {
@@ -91,6 +105,15 @@ public class VendotronController {
         // TODO:
         // Display item menu
         service.giveItemToUser("test");
+    }
+
+    private void cancel() {
+        System.out.println("CANCEL");
+
+        Map<CoinType, Integer> changes = service.returnChanges();
+        // TODO:
+        // display change with VIEW
+        System.out.println(changes);
     }
 
     private void unknownCommand() {

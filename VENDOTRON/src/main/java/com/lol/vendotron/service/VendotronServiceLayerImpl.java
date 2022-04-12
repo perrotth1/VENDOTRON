@@ -6,9 +6,13 @@ package com.lol.vendotron.service;
 
 import com.lol.vendotron.dao.VendotronAuditDao;
 import com.lol.vendotron.dao.VendotronDao;
+import com.lol.vendotron.dao.VendotronDaoFileException;
 import com.lol.vendotron.dto.Egg;
+import com.lol.vendotron.utils.Change;
+import com.lol.vendotron.utils.CoinType;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -21,17 +25,12 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
     private VendotronDao dao;
     private VendotronAuditDao auditDao;
 
-    // for testing.
-    public VendotronServiceLayerImpl() {
+    public VendotronServiceLayerImpl(VendotronDao dao, VendotronAuditDao auditDao) {
         moneyAmountInMachine = new BigDecimal("0");
-    }
 
-//    public VendotronServiceLayerImpl(VendotronDao dao, VendotronAuditDao auditDao) {
-//        userMoney = new BigDecimal("0");
-//
-//        this.dao = dao;
-//        this.auditDao = auditDao;
-//    }
+        this.dao = dao;
+        this.auditDao = auditDao;
+    }
 
     @Override
     public void addMoney(BigDecimal moneyAmount) {
@@ -50,31 +49,54 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
     }
 
     @Override
-    public void returnChange() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Egg> getAllItems() throws VendotronDaoFileException {
+        return dao.getAllEggs();
     }
 
     @Override
-    public List<Egg> getAllItems() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public Egg giveItemToUser(int itemId) throws InsufficientFundsException,
+            NoItemInventoryException,
+            VendotronDaoFileException {
+//        Egg egg = new Egg(1, "egg", "test", new BigDecimal("1.0"), 1);
 
-    @Override
-    public Egg giveItemToUser(String title) throws InsufficientFundsException, NoItemInventoryException {
-        Egg egg = new Egg("egg", new BigDecimal("1.0"), 1);
-        // TODO:
-        // Get item from DAO
+        // TODO: error handling
+        Egg egg = dao.getEgg(itemId);
 
         // Check if the item has enough stock
         if (egg.getStock() < 1) {
             throw new NoItemInventoryException("There are no " + egg.getName() + ". Please select another item.");
         }
-
         // Check if the user has put in enough money before purchasing an item.
         if (moneyAmountInMachine.compareTo(egg.getCost()) < 0) {
             throw new NoItemInventoryException("Insufficient fund. Please put more money.");
         }
 
+        // Reduce stock with DAO
+        dao.decrementStock(egg.getId());
+        // update audit file
+        String log = egg.getName() + " was sold.";
+        auditDao.writeAuditEntry(log);
+
+        // update audit file
+        log = "Original amount of money: " + moneyAmountInMachine.setScale(2).toString();
+        auditDao.writeAuditEntry(log);
+
+        // Reduce money amount
+        moneyAmountInMachine = moneyAmountInMachine.subtract(egg.getCost());
+
+        // update audit file after transaction.
+        log += "After purchasing: " + moneyAmountInMachine.toString();
+        auditDao.writeAuditEntry(log);
+
         return egg;
+    }
+
+    @Override
+    public Map<CoinType, Integer> returnChanges() {
+        // convert dollar amount to cents.
+        Map<CoinType, Integer> changes
+                = Change.getCoins(moneyAmountInMachine.multiply(new BigDecimal("100")).intValue());
+
+        return changes;
     }
 }
