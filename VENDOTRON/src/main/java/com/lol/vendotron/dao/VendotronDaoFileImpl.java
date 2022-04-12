@@ -115,7 +115,7 @@ public class VendotronDaoFileImpl implements VendotronDao {
 
     @Override
     public BigDecimal addToBalance(BigDecimal _amount) {
-        this.balance.add(_amount);
+        this.balance = this.balance.add(_amount);
         return this.balance;
     }
 
