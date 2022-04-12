@@ -10,4 +10,4 @@ package com.lol.vendotron.ui;
  */
 public class VendotronView {
     
-}
+    }
