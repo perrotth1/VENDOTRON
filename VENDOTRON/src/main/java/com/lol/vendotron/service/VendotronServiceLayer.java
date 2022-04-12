@@ -19,8 +19,6 @@ public interface VendotronServiceLayer {
 
     void addMoney(BigDecimal moneyAmount);
 
-    void subtractMoney(BigDecimal moneyAmount);
-
     Map<CoinType, Integer> returnChanges();
 
     List<Egg> getAllItems() throws VendotronDaoFileException;

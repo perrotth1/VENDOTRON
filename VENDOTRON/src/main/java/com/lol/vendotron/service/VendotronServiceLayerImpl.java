@@ -20,32 +20,19 @@ import java.util.Map;
  */
 public class VendotronServiceLayerImpl implements VendotronServiceLayer {
 
-    private BigDecimal moneyAmountInMachine;
-
     private VendotronDao dao;
     private VendotronAuditDao auditDao;
 
     public VendotronServiceLayerImpl(VendotronDao dao, VendotronAuditDao auditDao) {
-        moneyAmountInMachine = new BigDecimal("0");
-
         this.dao = dao;
         this.auditDao = auditDao;
     }
 
     @Override
     public void addMoney(BigDecimal moneyAmount) {
-        moneyAmountInMachine = moneyAmountInMachine.add(moneyAmount);
-
+        dao.addToBalance(moneyAmount);
         // for testing
-        System.out.println(moneyAmountInMachine);
-    }
-
-    @Override
-    public void subtractMoney(BigDecimal moneyAmount) {
-        moneyAmountInMachine = moneyAmountInMachine.subtract(moneyAmount);
-
-        // for testing
-        System.out.println(moneyAmountInMachine);
+        System.out.println(dao.getBalance());
     }
 
     @Override
@@ -57,8 +44,6 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
     public Egg giveItemToUser(int itemId) throws InsufficientFundsException,
             NoItemInventoryException,
             VendotronDaoFileException {
-//        Egg egg = new Egg(1, "egg", "test", new BigDecimal("1.0"), 1);
-
         // TODO: error handling
         Egg egg = dao.getEgg(itemId);
 
@@ -67,7 +52,7 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
             throw new NoItemInventoryException("There are no " + egg.getName() + ". Please select another item.");
         }
         // Check if the user has put in enough money before purchasing an item.
-        if (moneyAmountInMachine.compareTo(egg.getCost()) < 0) {
+        if (dao.getBalance().compareTo(egg.getCost()) < 0) {
             throw new NoItemInventoryException("Insufficient fund. Please put more money.");
         }
 
@@ -78,14 +63,14 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
         auditDao.writeAuditEntry(log);
 
         // update audit file
-        log = "Original amount of money: " + moneyAmountInMachine.setScale(2).toString();
+        log = "Original amount of money: " + dao.getBalance().toString();
         auditDao.writeAuditEntry(log);
 
         // Reduce money amount
-        moneyAmountInMachine = moneyAmountInMachine.subtract(egg.getCost());
+        dao.addToBalance(egg.getCost().negate());
 
         // update audit file after transaction.
-        log += "After purchasing: " + moneyAmountInMachine.toString();
+        log = "After purchasing: " + dao.getBalance().toString();
         auditDao.writeAuditEntry(log);
 
         return egg;
@@ -94,8 +79,14 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
     @Override
     public Map<CoinType, Integer> returnChanges() {
         // convert dollar amount to cents.
-        Map<CoinType, Integer> changes
-                = Change.getCoins(moneyAmountInMachine.multiply(new BigDecimal("100")).intValue());
+        int currentBalanceAsCents = dao.getBalance()
+                .multiply(new BigDecimal("100"))
+                .intValue();
+
+        Map<CoinType, Integer> changes = Change.getCoins(currentBalanceAsCents);
+
+        // clear balance
+        dao.clearBalance();
 
         return changes;
     }

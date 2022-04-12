@@ -46,30 +46,32 @@ public class VendotronController {
         // TODO: TRY CATCH
         try {
             while (keepGoing) {
-                menuSelection = getMenuSelection();
+                try {
+                    menuSelection = getMenuSelection();
 
-                // list of item
-                switch (menuSelection) {
-                    case 1:
-                        putMoneyToBuy();
-                        break;
-                    case 2:
-                        selectItem();
-                        break;
-                    case 3:
-                        cancel();
-                        break;
-                    case 4:
-                        keepGoing = false;
-                        break;
-                    default:
-                        unknownCommand();
+                    // list of item
+                    switch (menuSelection) {
+                        case 1:
+                            putMoneyToBuy();
+                            break;
+                        case 2:
+                            selectItem();
+                            break;
+                        case 3:
+                            cancel();
+                            break;
+                        case 4:
+                            keepGoing = false;
+                            break;
+                        default:
+                            unknownCommand();
+                    }
+                } catch (InsufficientFundsException | NoItemInventoryException e) {
+                    System.out.println(e.getMessage());
                 }
             }
-            exitMessage();
-        } catch (InsufficientFundsException
-                | NoItemInventoryException
-                | VendotronDaoFileException e) {
+            exitService();
+        } catch (VendotronDaoFileException e) {
             // TODO: should call a method in VIEW
             System.out.println(e.getMessage());
         }
@@ -77,11 +79,15 @@ public class VendotronController {
 
     private int getMenuSelection() throws VendotronDaoFileException {
         //
-//        List<Egg> itemList = service.getAllItems();
+        List<Egg> itemList = service.getAllItems();
 
-//        System.out.println(itemList);
+        // TODO: display USING VIEW
+        itemList.stream().forEach(item
+                -> System.out.format("%d: %s - %.2f - %d\n",
+                        item.getId(), item.getName(), item.getCost(), item.getStock()));
 
         // for testing
+        System.out.println("");
         System.out.println("put money");
         System.out.println("selectItem");
         System.out.println("cancel");
@@ -100,11 +106,12 @@ public class VendotronController {
         service.addMoney(new BigDecimal("1.20"));
     }
 
-    private void selectItem() throws InsufficientFundsException, NoItemInventoryException {
-        System.out.println("SELECT ITEM");
+    private void selectItem() throws InsufficientFundsException, NoItemInventoryException, VendotronDaoFileException {
+        // for testing
+        int itemId = io.readInt("SELECT ITEM");
         // TODO:
         // Display item menu
-        service.giveItemToUser("test");
+        service.giveItemToUser(itemId);
     }
 
     private void cancel() {
@@ -121,8 +128,13 @@ public class VendotronController {
         System.out.println("Unknown command");
     }
 
-    private void exitMessage() {
-        // TODO: should make a call to VIEW
-        System.out.println("BYE!!!");
+    private void exitService() {
+        // return user's money before exit.
+        Map<CoinType, Integer> changes = service.returnChanges();
+        // TODO:
+        // display change with VIEW
+        System.out.println(changes);
+
+        System.out.println("Thank you for using service!");
     }
 }
