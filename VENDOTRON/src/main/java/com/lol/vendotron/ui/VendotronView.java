@@ -12,54 +12,49 @@ import com.lol.vendotron.dto.Egg;
  *
  * @author Nicole
  */
+public class VendotronView {
 
-public class VendotronView 
-{
-    private UserIO io = new UserIOConsoleImpl();
-}
+    private UserIO io;
 
-public int getMenuSelection()
-{
-    io.print("Main Menu");
-    io.print("1. Put Money To Buy");
-    io.print("2. Select Item");
-    io.print("3.");
-    io.print("4. Cancel");
-    io.print("5.");
+    public int getMenuSelection() {
+        io.print("Main Menu");
+        io.print("1. Put Money To Buy");
+        io.print("2. Select Item");
+        io.print("3. Cancel");
+        io.print("4. Exit");
+
+        return io.readInt("Please choose one of the options above:", 1, 4);    
+    }
     
-    return io.readInt("Please choose one of the options above:")    
-}
+    // Constructor
+    public VendotronView(UserIO io) {
+        this.io = io;
+    }
+    
 
 // Display 
-public void displayselectItem()
-{
-    io.print();
-}
-
+    public void displayselectItem() {
+        io.print();
+    }
 
 // Display Banners
+    public void displayAddMoney() {
+        io.print("---Buy an Item---");
+    }
 
-public void display()
-{
-    io.print("---Buy an Item---");
-}
+    public void display() {
+        io.print("---Insufficient Funds---");
+    }
 
-public void display()
-{
-    io.print("---Insufficient Funds---");
-}
+    public void displayCancel() {
+        io.print("---Dispensing Egg---");
+    }
 
-public void displayCancel()
-{
-    io.print("---Dispensing Egg---");
-}
+    public void displayunknownCommand() {
+        io.print("---Unknown Command---");
+    }
 
-public void displayunknownCommand()
-{
-    io.print("---Unknown Command---");
-}
-
-public void displayexitMessage()
-{
-    io.print("---Bye!---");
+    public void displayexitMessage() {
+        io.print("---Bye!---");
+    }
 }
