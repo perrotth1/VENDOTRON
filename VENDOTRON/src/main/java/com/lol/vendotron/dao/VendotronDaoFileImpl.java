@@ -24,7 +24,7 @@ public class VendotronDaoFileImpl implements VendotronDao {
     private final String DELIMITER = "::";
     
     public VendotronDaoFileImpl(){
-        this.DATA_FILE = "data_file.txt";
+        this.DATA_FILE = "DATA_FILE.txt";
     }
     public VendotronDaoFileImpl(String _dataFile){
         this.DATA_FILE = _dataFile;
