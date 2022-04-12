@@ -31,6 +31,7 @@ public class VendotronView {
         return io.readInt("Please choose one of the options above:", 1, 4);
     }
 
+    // This method was made by Jeonghoon by the way
     public void displayAllItems(List<Egg> itemList) {
         io.print("-------------- VENDING MACHINE ITEMS ----------------");
         itemList.stream().forEach(item -> {
