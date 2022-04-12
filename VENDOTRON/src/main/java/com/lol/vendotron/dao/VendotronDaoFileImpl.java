@@ -20,6 +20,8 @@ import java.io.BufferedReader;
  */
 public class VendotronDaoFileImpl implements VendotronDao {
     private Map<Integer, Egg> eggs = new HashMap<>();
+    private BigDecimal balance = new BigDecimal("0").setScale(2, RoundingMode.HALF_UP);
+    
     private final String DATA_FILE;
     private final String DELIMITER = "::";
     
@@ -104,5 +106,21 @@ public class VendotronDaoFileImpl implements VendotronDao {
             }
         }   
         in.close();
+    }
+
+    @Override
+    public BigDecimal getBalance() {
+        return this.balance;
+    }
+
+    @Override
+    public BigDecimal addToBalance(BigDecimal _amount) {
+        this.balance.add(_amount);
+        return this.balance;
+    }
+
+    @Override
+    public void clearBalance() {
+        this.balance = new BigDecimal("0").setScale(2, RoundingMode.HALF_UP);
     }
 }
