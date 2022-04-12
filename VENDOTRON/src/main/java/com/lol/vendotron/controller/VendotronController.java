@@ -37,13 +37,11 @@ public class VendotronController {
         boolean keepGoing = true;
         int menuSelection;
 
-        // TODO: TRY CATCH
         try {
             while (keepGoing) {
                 try {
                     menuSelection = getMenuSelection();
 
-                    // list of item
                     switch (menuSelection) {
                         case 1:
                             putMoneyToBuy();
@@ -72,52 +70,50 @@ public class VendotronController {
         }
     }
 
+    // display main menu and current balance
+    // return user's selection
     private int getMenuSelection() throws VendotronDaoFileException {
         List<Egg> itemList = service.getAllItems();
-        // TODO: display USING VIEW
-        view.displayAllItems(itemList);
 
+        view.displayAllItems(itemList);
         view.displayCurrentBalance(service.getCurrentBalance());
 
         return view.getMenuSelection();
     }
 
+    // get money amount from user
+    // min: 0.1, max: 20.0
     private void putMoneyToBuy() {
-        // TODO: Call service layer
-        // display menu for adding money from VIEW
-        BigDecimal moneyAmount = view.displayAddMoney();
+        BigDecimal min = new BigDecimal("0.10");
+        BigDecimal max = new BigDecimal("20.00");
+        BigDecimal moneyAmount = view.displayAddMoney(min, max);
         service.addMoney(moneyAmount);
     }
 
     private void selectItem() throws InsufficientFundsException, NoItemInventoryException, VendotronDaoFileException {
-        int selectedId = view.displayselectItem(1, service.getAllItems().size());
+        int selectedId = view.getItemSelection(1, service.getAllItems().size());
         Egg egg = service.giveItemToUser(selectedId);
         view.displayDispensingItem(egg);
         view.pressEnterContinue();
     }
 
+    // return changes to user and back to main menu.
     private void cancel() {
-        System.out.println("CANCEL");
-
         Map<CoinType, Integer> changes = service.returnChanges();
-        // TODO:
-        // display change with VIEW
-        System.out.println(changes);
+
+        view.displayChanges(changes);
         view.pressEnterContinue();
     }
 
     private void unknownCommand() {
-        // TODO: should make a call to VIEW
-        System.out.println("Unknown command");
+        view.displayUnknownCommand();
     }
 
     private void exitService() {
         // return user's money before exit.
         Map<CoinType, Integer> changes = service.returnChanges();
-        // TODO:
-        // display change with VIEW
-        System.out.println(changes);
 
-        System.out.println("Thank you for using service!");
+        view.displayChanges(changes);
+        view.displayExitMessage();
     }
 }

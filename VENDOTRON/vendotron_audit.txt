@@ -61,3 +61,12 @@
 2022-04-12T16:00:07.532495800 : Shoyu Egg was sold.
 2022-04-12T16:00:07.533495100 : Original amount of money: 2.75
 2022-04-12T16:00:07.533495100 : After purchasing: 1.00
+2022-04-12T19:19:46.454183800 : Century Egg was sold.
+2022-04-12T19:19:46.468178800 : Original amount of money: 10.00
+2022-04-12T19:19:46.469178400 : After purchasing: 3.00
+2022-04-12T19:41:16.998899100 : Shoyu Egg was sold.
+2022-04-12T19:41:17.010879 : Original amount of money: 11.00
+2022-04-12T19:41:17.011878700 : After purchasing: 9.25
+2022-04-12T19:41:36.723320600 : Century Egg was sold.
+2022-04-12T19:41:36.724305700 : Original amount of money: 9.25
+2022-04-12T19:41:36.724305700 : After purchasing: 2.25

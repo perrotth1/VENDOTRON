@@ -30,9 +30,8 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
 
     @Override
     public void addMoney(BigDecimal moneyAmount) {
+        // add amount to dao balance
         dao.addToBalance(moneyAmount);
-        // for testing
-        System.out.println(dao.getBalance());
     }
 
     @Override
@@ -72,7 +71,7 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
         // update audit file after transaction.
         log = "After purchasing: " + dao.getBalance().toString();
         auditDao.writeAuditEntry(log);
-        
+
         //Roll if egg shatters when it is dispensed
         egg.rollIfBreaks();
 

@@ -4,6 +4,12 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO {
+    final private Scanner sc;
+
+    public UserIOConsoleImpl() {
+        sc = new Scanner(System.in);
+    }
+
     @Override
     public void print(String message) {
         System.out.println(message);
@@ -11,97 +17,173 @@ public class UserIOConsoleImpl implements UserIO {
 
     @Override
     public String readString(String prompt) {
-        Scanner sc = new Scanner(System.in);
         System.out.println(prompt);
-        return( sc.nextLine() );
+        return sc.nextLine();
     }
 
     @Override
     public int readInt(String prompt) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        return( Integer.parseInt( sc.nextLine() ) );
+        int userInput;
+
+        while (true) {
+            System.out.println(prompt);
+
+            try {
+                userInput = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("*ERROR* Invalid integer format. Please try again!");
+            }
+        }
+        return userInput;
     }
 
     @Override
     public int readInt(String prompt, int min, int max) {
-        Scanner sc = new Scanner(System.in);
-        int input;
-        while(true) {
-            System.out.println(prompt);
-            input = Integer.parseInt( sc.nextLine() ) ;
-            if(input >= min && input <= max ) {
-                return input;
+        int userInput;
+
+        while (true) {
+            userInput = readInt(prompt);
+            if (min <= userInput && userInput <= max) {
+                break;
+            } else {
+                System.out.format("*ERROR* Invalid value: Please enter the value between %d and %d\n", min, max);
             }
         }
+        return userInput;
     }
 
     @Override
     public double readDouble(String prompt) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        return( Double.parseDouble( sc.nextLine() ) );
+        double userInput;
+
+        while (true) {
+            System.out.println(prompt);
+
+            try {
+                userInput = Double.parseDouble(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("*ERROR* Invalid integer format. Please try again!");
+            }
+        }
+        return userInput;
     }
 
     @Override
     public double readDouble(String prompt, double min, double max) {
-        Scanner sc = new Scanner(System.in);
-        double input;
-        while(true) {
-            System.out.println(prompt);
-            input = Double.parseDouble( sc.nextLine() ) ;
-            if(input >= min && input <= max ) {
-                return input;
+        double userInput;
+
+        while (true) {
+            userInput = readDouble(prompt);
+            if (min <= userInput && userInput <= max) {
+                break;
+            } else {
+                System.out.format("*ERROR* Invalid value: Please enter the value between %f and %f\n", min, max);
             }
         }
+        return userInput;
     }
 
     @Override
     public float readFloat(String prompt) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        return( Float.parseFloat( sc.nextLine() ) );
+        float userInput;
 
+        while (true) {
+            System.out.println(prompt);
+
+            try {
+                userInput = Float.parseFloat(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("*ERROR* Invalid integer format. Please try again!");
+            }
+        }
+        return userInput;
     }
 
     @Override
     public float readFloat(String prompt, float min, float max) {
-        Scanner sc = new Scanner(System.in);
-        float input;
-        while(true) {
-            System.out.println(prompt);
-            input = Float.parseFloat( sc.nextLine() ) ;
-            if(input >= min && input <= max ) {
-                return input;
+        float userInput;
+
+        while (true) {
+            userInput = readFloat(prompt);
+            if (min <= userInput && userInput <= max) {
+                break;
+            } else {
+                System.out.format("*ERROR* Invalid value: Please enter the value between %f and %f\n", min, max);
             }
         }
+        return userInput;
     }
 
     @Override
     public long readLong(String prompt) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        return( Long.parseLong( sc.nextLine() ) );
+        long userInput;
 
+        while (true) {
+            System.out.println(prompt);
+
+            try {
+                userInput = Long.parseLong(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("*ERROR* Invalid integer format. Please try again!");
+            }
+        }
+        return userInput;
     }
 
     @Override
     public long readLong(String prompt, long min, long max) {
-        Scanner sc = new Scanner(System.in);
-        long input;
-        while(true) {
-            System.out.println(prompt);
-            input = Long.parseLong( sc.nextLine() ) ;
-            if(input >= min && input <= max ) {
-                return input;
+        long userInput;
+
+        while (true) {
+            userInput = readLong(prompt);
+            if (min <= userInput && userInput <= max) {
+                break;
+            } else {
+                System.out.format("*ERROR* Invalid value: Please enter the value between %d and %d\n", min, max);
             }
         }
+        return userInput;
+    }
+
+//    @Override
+//    public BigDecimal readBigDecimal(String prompt) {
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println(prompt);
+//        return new BigDecimal(sc.nextLine());
+//    }
+    @Override
+    public BigDecimal readBigDecimal(String prompt) {
+        BigDecimal userInput;
+
+        while (true) {
+            System.out.println(prompt);
+
+            try {
+                userInput = new BigDecimal(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("*ERROR* Invalid decimal format. Please try again!");
+            }
+        }
+        return userInput;
     }
 
     @Override
-    public BigDecimal readBigDecimal(String prompt) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        return new BigDecimal(sc.nextLine());
+    public BigDecimal readBigDecimal(String prompt, BigDecimal min, BigDecimal max) {
+        BigDecimal userInput;
+
+        while (true) {
+            userInput = readBigDecimal(prompt);
+            if (0 <= userInput.compareTo(min) && userInput.compareTo(max) <= 0) {
+                break;
+            } else {
+                System.out.format("*ERROR* Invalid value: Please enter the value between %s and %s\n", min, max);
+            }
+        }
+        return userInput;
     }
 }
