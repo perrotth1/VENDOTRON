@@ -75,7 +75,7 @@ public class VendotronController {
         List<Egg> itemList = service.getAllItems();
         // TODO: display USING VIEW
         view.displayAllItems(itemList);
-        view.display();
+  //      view.displayNoMoney();
 
         return view.getMenuSelection();
     }
