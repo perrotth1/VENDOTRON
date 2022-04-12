@@ -67,11 +67,14 @@ public class VendotronServiceLayerImpl implements VendotronServiceLayer {
         auditDao.writeAuditEntry(log);
 
         // Reduce money amount
-        dao.addToBalance(egg.getCost().negate());
+        dao.subtractBalance(egg.getCost());
 
         // update audit file after transaction.
         log = "After purchasing: " + dao.getBalance().toString();
         auditDao.writeAuditEntry(log);
+        
+        //Roll if egg shatters when it is dispensed
+        egg.rollIfBreaks();
 
         return egg;
     }

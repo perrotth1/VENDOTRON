@@ -61,13 +61,14 @@ public class VendotronController {
                             unknownCommand();
                     }
                 } catch (InsufficientFundsException | NoItemInventoryException e) {
-                    System.out.println(e.getMessage());
+                    view.displayError(e.getMessage());
+                    view.pressEnterContinue();
                 }
             }
             exitService();
         } catch (VendotronDaoFileException e) {
-            // TODO: should call a method in VIEW
-            System.out.println(e.getMessage());
+            view.displayError(e.getMessage());
+            view.pressEnterContinue();
         }
     }
 
@@ -92,6 +93,7 @@ public class VendotronController {
         int selectedId = view.displayselectItem(1, service.getAllItems().size());
         Egg egg = service.giveItemToUser(selectedId);
         view.displayDispensingItem(egg);
+        view.pressEnterContinue();
     }
 
     private void cancel() {
@@ -101,6 +103,7 @@ public class VendotronController {
         // TODO:
         // display change with VIEW
         System.out.println(changes);
+        view.pressEnterContinue();
     }
 
     private void unknownCommand() {

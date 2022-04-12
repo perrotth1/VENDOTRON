@@ -54,7 +54,7 @@ public class VendotronDaoFileImpl implements VendotronDao {
     public String marshall(Egg _egg){
         String line = _egg.getId() + DELIMITER + _egg.getName() + DELIMITER
                         + _egg.getOrigin() + DELIMITER + _egg.getCost() + DELIMITER
-                        + _egg.getStock();
+                        + _egg.getStock() + DELIMITER + _egg.getCaption();
         return line;
     }
     
@@ -64,8 +64,9 @@ public class VendotronDaoFileImpl implements VendotronDao {
         String name = tokens[1], origin = tokens[2];
         BigDecimal cost = new BigDecimal(tokens[3]).setScale(2, RoundingMode.HALF_UP);
         int stock = Integer.parseInt(tokens[4]);
+        String caption = tokens[5];
         
-        Egg newEgg = new Egg(id,name,origin,cost,stock);
+        Egg newEgg = new Egg(id,name,origin,cost,stock,caption);
         return newEgg;
     }
     

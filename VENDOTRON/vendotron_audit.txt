@@ -7,9 +7,57 @@
 2022-04-12T14:35:30.316501 : Egg was sold.
 2022-04-12T14:35:30.332212 : Original amount of money: 1.20
 2022-04-12T14:35:30.332614 : After purchasing: 0.20
+<<<<<<< HEAD
+2022-04-12T14:52:41.948268 : Egg was sold.
+2022-04-12T14:52:41.964557 : Original amount of money: 1.20
+2022-04-12T14:52:41.965018 : After purchasing: 0.20
+2022-04-12T14:53:15.234842 : Egg was sold.
+2022-04-12T14:53:15.252728 : Original amount of money: 1.20
+2022-04-12T14:53:15.253205 : After purchasing: 0.20
+=======
 2022-04-12T15:10:36.040767500 : Egg was sold.
 2022-04-12T15:10:36.069751 : Original amount of money: 2.10
 2022-04-12T15:10:36.074748700 : After purchasing: 1.10
 2022-04-12T15:14:44.099229400 : Egg was sold.
 2022-04-12T15:14:44.109942800 : Original amount of money: 2.10
 2022-04-12T15:14:44.110945300 : After purchasing: 1.10
+>>>>>>> e398e7255b90de5e1cd6b4a75a510003196f8ede
+2022-04-12T15:50:43.048002500 : Egg was sold.
+2022-04-12T15:50:43.147946100 : Original amount of money: 5.30
+2022-04-12T15:50:43.149944300 : After purchasing: 4.30
+2022-04-12T15:53:20.379068400 : Egg was sold.
+2022-04-12T15:53:20.399058800 : Original amount of money: 1.00
+2022-04-12T15:53:20.400059600 : After purchasing: 0.00
+2022-04-12T15:54:24.055452200 : Egg was sold.
+2022-04-12T15:54:24.056451700 : Original amount of money: 2.00
+2022-04-12T15:54:24.057452700 : After purchasing: 1.00
+2022-04-12T15:54:39.257081600 : Egg was sold.
+2022-04-12T15:54:39.258080700 : Original amount of money: 1.00
+2022-04-12T15:54:39.259078900 : After purchasing: 0.00
+2022-04-12T15:54:54.948125800 : Egg was sold.
+2022-04-12T15:54:54.949124900 : Original amount of money: 10.00
+2022-04-12T15:54:54.950124400 : After purchasing: 9.00
+2022-04-12T15:55:07.004811 : Century Egg was sold.
+2022-04-12T15:55:07.005811900 : Original amount of money: 9.00
+2022-04-12T15:55:07.006808800 : After purchasing: 2.00
+2022-04-12T15:58:58.736456700 : Golden Egg was sold.
+2022-04-12T15:58:58.754445400 : Original amount of money: 30.00
+2022-04-12T15:58:58.756443300 : After purchasing: 10.00
+2022-04-12T15:59:13.294833600 : Shoyu Egg was sold.
+2022-04-12T15:59:13.295833300 : Original amount of money: 10.00
+2022-04-12T15:59:13.296832500 : After purchasing: 8.25
+2022-04-12T15:59:25.954766300 : Rotten Egg was sold.
+2022-04-12T15:59:25.955765800 : Original amount of money: 8.25
+2022-04-12T15:59:25.956765200 : After purchasing: 8.00
+2022-04-12T15:59:30.770206600 : Rotten Egg was sold.
+2022-04-12T15:59:30.771206200 : Original amount of money: 8.00
+2022-04-12T15:59:30.771206200 : After purchasing: 7.75
+2022-04-12T15:59:55.175142500 : Smoked Egg was sold.
+2022-04-12T15:59:55.176142600 : Original amount of money: 7.75
+2022-04-12T15:59:55.176142600 : After purchasing: 4.50
+2022-04-12T16:00:04.318414300 : Shoyu Egg was sold.
+2022-04-12T16:00:04.319414300 : Original amount of money: 4.50
+2022-04-12T16:00:04.320414800 : After purchasing: 2.75
+2022-04-12T16:00:07.532495800 : Shoyu Egg was sold.
+2022-04-12T16:00:07.533495100 : Original amount of money: 2.75
+2022-04-12T16:00:07.533495100 : After purchasing: 1.00

@@ -28,8 +28,8 @@ public class VendotronDaoStubImpl implements VendotronDao {
     public VendotronDaoStubImpl() {
         balance = new BigDecimal("0").setScale(2, RoundingMode.HALF_UP);
 
-        egg1 = new Egg(1, "Egg", "USA", new BigDecimal("1.25"), 1);
-        egg2 = new Egg(2, "Black Egg", "Canada", new BigDecimal("2.25"), 0);
+        egg1 = new Egg(1, "Egg", "USA", new BigDecimal("1.25"), 1, "");
+        egg2 = new Egg(2, "Black Egg", "Canada", new BigDecimal("2.25"), 0, "");
 
         itemList = new ArrayList<>();
         itemList.add(egg1);

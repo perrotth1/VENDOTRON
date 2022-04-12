@@ -47,7 +47,7 @@ public class VendotronDaoFileImplTest {
 
         String file = "TEST_FILE.txt";
         initFile(file);
-        testDao = new VendotronDaoStubImpl();
+        testDao = new VendotronDaoFileImpl(file);
     }
 
     @AfterEach
