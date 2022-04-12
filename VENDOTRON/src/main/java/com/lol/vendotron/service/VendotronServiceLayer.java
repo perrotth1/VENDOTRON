@@ -4,10 +4,23 @@
  */
 package com.lol.vendotron.service;
 
+import com.lol.vendotron.dto.Egg;
+import java.math.BigDecimal;
+import java.util.List;
+
 /**
  *
  * @author Henry
  */
-public class VendotronServiceLayer {
-    
+public interface VendotronServiceLayer {
+
+    void addMoney(BigDecimal moneyAmount);
+
+    void subtractMoney(BigDecimal moneyAmount);
+
+    void returnChange();
+
+    List<Egg> getAllItems();
+
+    Egg giveItemToUser(String title) throws InsufficientFundsException, NoItemInventoryException;
 }
