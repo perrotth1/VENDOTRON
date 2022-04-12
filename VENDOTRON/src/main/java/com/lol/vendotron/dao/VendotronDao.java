@@ -19,6 +19,8 @@ public interface VendotronDao {
     
     public BigDecimal addToBalance(BigDecimal _amount);
     
+    public BigDecimal subtractBalance(BigDecimal _amount);
+    
     public void clearBalance();
 
 }

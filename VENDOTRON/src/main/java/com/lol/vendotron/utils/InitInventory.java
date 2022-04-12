@@ -61,13 +61,12 @@ public class InitInventory {
         return line;
     }
     
-    public static void main(String[] args) throws VendotronDaoFileException{
+    public static void initFile(String _file) throws VendotronDaoFileException{
         Map<Integer, Egg> eggs = build();
         PrintWriter out;
-        String DATA_FILE = "DATA_FILE.txt";
         
         try{
-            out = new PrintWriter( new FileWriter(DATA_FILE) );
+            out = new PrintWriter( new FileWriter(_file) );
         }
         catch(java.io.IOException e){
             throw new VendotronDaoFileException("Could not write to file", e);
@@ -80,6 +79,10 @@ public class InitInventory {
         }
         
         out.close();
+    }
+    
+    public static void main(String[] args) throws VendotronDaoFileException{
+        initFile("DATA_FILE.txt");
     }
     
 }
