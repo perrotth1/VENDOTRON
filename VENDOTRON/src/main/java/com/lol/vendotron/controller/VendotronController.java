@@ -9,8 +9,6 @@ import com.lol.vendotron.dto.Egg;
 import com.lol.vendotron.service.InsufficientFundsException;
 import com.lol.vendotron.service.NoItemInventoryException;
 import com.lol.vendotron.service.VendotronServiceLayer;
-import com.lol.vendotron.ui.UserIO;
-import com.lol.vendotron.ui.UserIOConsoleImpl;
 import com.lol.vendotron.ui.VendotronView;
 import com.lol.vendotron.utils.CoinType;
 import java.math.BigDecimal;
@@ -22,10 +20,6 @@ import java.util.Map;
  * @author nicolemagpantay
  */
 public class VendotronController {
-
-    // FOR TESTING
-    UserIO io = new UserIOConsoleImpl();
-    ////////////////////////////
 
     private VendotronServiceLayer service;
     private VendotronView view;
@@ -78,24 +72,12 @@ public class VendotronController {
     }
 
     private int getMenuSelection() throws VendotronDaoFileException {
-        //
         List<Egg> itemList = service.getAllItems();
-
         // TODO: display USING VIEW
-        itemList.stream().forEach(item
-                -> System.out.format("%d: %s - %.2f - %d\n",
-                        item.getId(), item.getName(), item.getCost(), item.getStock()));
+        view.displayAllItems(itemList);
+        view.display();
 
-        // for testing
-        System.out.println("");
-        System.out.println("put money");
-        System.out.println("selectItem");
-        System.out.println("cancel");
-        System.out.println("exit");
-        return io.readInt("SELECT NUMBER: ");
-
-        // TODO: shold call a method in VIEW
-        // return view.printMenuAndGetSelection();
+        return view.getMenuSelection();
     }
 
     private void putMoneyToBuy() {
@@ -107,11 +89,9 @@ public class VendotronController {
     }
 
     private void selectItem() throws InsufficientFundsException, NoItemInventoryException, VendotronDaoFileException {
-        // for testing
-        int itemId = io.readInt("SELECT ITEM");
         // TODO:
         // Display item menu
-        service.giveItemToUser(itemId);
+        service.giveItemToUser(1);
     }
 
     private void cancel() {

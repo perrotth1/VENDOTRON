@@ -16,6 +16,11 @@ public class VendotronView {
 
     private UserIO io;
 
+    // Constructor
+    public VendotronView(UserIO io) {
+        this.io = io;
+    }
+
     public int getMenuSelection() {
         io.print("Main Menu");
         io.print("1. Put Money To Buy");
@@ -23,18 +28,22 @@ public class VendotronView {
         io.print("3. Cancel");
         io.print("4. Exit");
 
-        return io.readInt("Please choose one of the options above:", 1, 4);    
+        return io.readInt("Please choose one of the options above:", 1, 4);
     }
-    
-    // Constructor
-    public VendotronView(UserIO io) {
-        this.io = io;
-    }
-    
 
-// Display 
+    public void displayAllItems(List<Egg> itemList) {
+        io.print("-------------- MENU ----------------");
+        itemList.stream().forEach(item -> {
+            io.print(item.getId() + " : " + item.getName() + " - "
+                    + item.getCost() + " : " + item.getStock());
+        }
+        );
+        io.print("-----------------------------------\n");
+    }
+
+// Display
     public void displayselectItem() {
-        io.print();
+//        io.print();
     }
 
 // Display Banners

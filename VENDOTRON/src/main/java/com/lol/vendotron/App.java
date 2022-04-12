@@ -13,6 +13,7 @@ import com.lol.vendotron.service.VendotronServiceLayer;
 import com.lol.vendotron.service.VendotronServiceLayerImpl;
 import com.lol.vendotron.ui.UserIO;
 import com.lol.vendotron.ui.UserIOConsoleImpl;
+import com.lol.vendotron.ui.VendotronView;
 
 /**
  *
@@ -21,18 +22,14 @@ import com.lol.vendotron.ui.UserIOConsoleImpl;
 public class App {
     public static void main(String[] args) {
         UserIO io = new UserIOConsoleImpl();
-//        VendotronView view = new VendotronViewImpl(io);
+        VendotronView view = new VendotronView(io);
         VendotronDao dao = new VendotronDaoFileImpl();
-//
+
         // Instantiate the Audit DAO
         VendotronAuditDao auditDao = new VendotronAuditDaoFileImpl();
         VendotronServiceLayer service = new VendotronServiceLayerImpl(dao, auditDao);
 
-        // for testing
-        VendotronController controller = new VendotronController(service);
-        /////
-
-//        VendotronController controller = new VendotronController(service, view);
+        VendotronController controller = new VendotronController(service, view);
 
         controller.run();
     }
