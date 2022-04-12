@@ -1,21 +1,25 @@
 package com.lol.vendotron.dto;
 
 import java.math.BigDecimal;
+import java.util.Random;
 /**
  *
  * @author nicolemagpantay
  */
 public class Egg {
-    private String name, origin;
+    private String name, origin, caption;
     private BigDecimal cost;
     private int id, stock;
+    private boolean isBroken;
     
-    public Egg(int _id, String _name, String _origin, BigDecimal _cost, int _stock){
+    public Egg(int _id, String _name, String _origin, BigDecimal _cost, int _stock, String _caption){
         this.id = _id;
         this.name = _name;
         this.origin = _origin;
         this.cost = _cost;
         this.stock = _stock;
+        this.caption = _caption;
+        this.isBroken = false;
     }
     
     public String getName(){
@@ -36,6 +40,19 @@ public class Egg {
     
     public void setStock(int _stock){
         this.stock = _stock;
+    }
+    
+    public void rollIfBreaks(){
+        Random rg = new Random();
+        if( rg.nextInt(2) == 0 ){
+            this.isBroken = true;
+        }
+    }
+    
+    public String getCaption(){
+        return (isBroken) 
+                ? "Bad luck. This egg broke when it was dispensed from the machine." 
+                : this.caption;
     }
     
     public int decrement(){
