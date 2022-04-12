@@ -2,9 +2,9 @@
 2::Golden Egg::Mixed Origin::20.00::1
 3::Rotten Egg::Mixed Origin::0.25::2
 4::Deviled Egg::Mixed Origin::3.50::5
-5::Tea Egg::China::5.00::3
+5::Tea Egg::China::5.00::0
 6::Century Egg::China::7.00::3
-7::Smoked Egg::China::3.25::3
+7::Smoked Egg::China::3.25::0
 8::Shoyu Egg::Japan::1.75::10
 9::Black Hot-Spring Egg::Japan::12.00::3
 10::Pickled Egg::Germany::1.25::10

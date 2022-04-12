@@ -34,8 +34,8 @@ public class VendotronView {
     public void displayAllItems(List<Egg> itemList) {
         io.print("-------------- VENDING MACHINE ITEMS ----------------");
         itemList.stream().forEach(item -> {
-            io.print(item.getId() + " : " + item.getName() + " - "
-                    + item.getCost() + " : " + item.getStock());
+            String priceLabel = (item.getStock()==0) ? "[OUT OF STOCK]" : "$"+item.getCost();
+            io.print(item.getId() + " : " + item.getName() + " - "+priceLabel);
         }
         );
         io.print("-----------------------------------\n");
